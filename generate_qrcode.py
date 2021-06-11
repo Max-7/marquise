@@ -41,11 +41,8 @@ if __name__ == "__main__":
 
     parser.add_argument("uri")
     parser.add_argument("-o", "--output", type=pathlib.Path, default="qrcode.png")
-    parser.add_argument("-t", "--text", type=str, choices=["Snacks", "Drinks", None], required=True)
+    parser.add_argument("-t", "--text", type=str, choices=["Snacks", "Drinks", None], required=False)
 
     args = parser.parse_args()
     img = generate_qr_code(args.uri, args.text)
     img.save(args.output)
-
-    img = generate_text_image(*MENU_TYPES["Snacks"])
-    img.save("a.png")
